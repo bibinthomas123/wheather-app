@@ -1,0 +1,75 @@
+@import "@radix-ui/colors/blackA.css";
+@import "@radix-ui/colors/mauve.css";
+@import "@radix-ui/colors/red.css";
+@import "@radix-ui/colors/violet.css";
+
+@keyframes overlayShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes contentShow {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.card {
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+    rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+    rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  background-color: rgba(255, 255, 255, 0.074);
+  border: 1px solid rgba(255, 255, 255, 0.222);
+  border-radius: 0.7rem;
+  transition: all ease 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.degree_weather {
+  font-size: 20px;
+  font-weight: 600;
+  font-size: 3.5rem;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+}
+
+.image {
+  padding-top: 20px;
+  width: 100px;
+  object-fit: cover;
+}
+
+.weather_desc {
+  font-size: 1.4rem;
+  font-weight: 200;
+  font-family: "Poppins", sans-serif;
+  margin-top: -10px;
+}
+
+.weatherCard_place,
+.weatherCard_time {
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.image_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  padding: 0;
+  background-size: cover;
+  filter: blur(20px); /* Apply the blur effect to the container */
+  background-position: center;
+}

@@ -2,7 +2,12 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      borderRadius: {
+        none: "0",
+        lg: "2rem",
+      },
+    },
   },
   plugins: [require("tailwindcss"), require("autoprefixer")],
 };

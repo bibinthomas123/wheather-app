@@ -3,6 +3,8 @@ import { getGeolocation } from "../lib/geoLocation";
 import { useGetCurrentWeatherQuery } from "../store/actions/weatherApi";
 import Loader from "../components/Loader";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 function Home() {
   const [backgroundImage, setBackgroundImage] = useState("");
@@ -11,6 +13,7 @@ function Home() {
   const dayOfMonth = date.getDate(); // Get the day of the month
   const monthName = date.toLocaleDateString("en-US", { month: "long" }); // Get the month name in full name format
   const year = date.getFullYear(); // Get the year
+  const navigate = useNavigate();
 
   const time = date.toLocaleTimeString([], {
     hour: "2-digit",
@@ -63,6 +66,10 @@ function Home() {
           backgroundImageUrl =
             "https://images.unsplash.com/photo-1529528744093-6f8abeee511d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
           break;
+        case "sunny":
+          backgroundImageUrl =
+            "https://images.unsplash.com/photo-1563305641-806e131a4262?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80";
+          break;
         default:
           backgroundImageUrl =
             "https://images.unsplash.com/photo-1514454529242-9e4677563e7b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
@@ -80,7 +87,7 @@ function Home() {
   }
 
   return (
-    <div
+    <motion.div
       style={{
         backgroundImage: `url("${backgroundImage}")`,
         width: "100%",
@@ -88,25 +95,53 @@ function Home() {
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      onClick={() => {
+        navigate("/weather");
+      }}
       className="Home_container"
     >
-      <div className="time_container">
-        <div className="time">{time}</div>
-        <div className="date">
+      <motion.div
+        className="time_container"
+        initial={{ y: 150, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: -150, opacity: 0 }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 20,
+        }}
+      >
+        <motion.div className="time">{time}</motion.div>
+        <motion.div className="date">
           {dayOfWeek}, {dayOfMonth} {monthName} {year}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* //weather */}
-      <div className="weather_container">
-        <div className="place">{data.location.name}</div>
-        <div className="home_weather">{data.current.condition.text}</div>
-        <div className="home_temp">
+      <motion.div
+        className="weather_container"
+        initial={{ y: -150, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: -150, opacity: 0 }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 20,
+        }}
+      >
+        <motion.div className="place">{data.location.name}</motion.div>
+        <motion.div className="home_weather">
+          {data.current.condition.text}
+        </motion.div>
+        <motion.div className="home_temp">
           <sup className="sup">o</sup>
           {data.current.temp_c}
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 }
 
