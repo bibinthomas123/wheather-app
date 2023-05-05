@@ -19,7 +19,7 @@ function Sidebar() {
   }, [navigate]);
 
   return (
-    <div className="container w-20 h-screen bg-slate-300 mx-3 py-3 rounded-xl  overflow-hidden  ">
+    <div className="container w-20  bg-slate-300 mx-3 py-3 rounded-xl  overflow-hidden  ">
       <div className="flex flex-col items-center justify-between">
         {/* company icon */}
         <i className="bx bxl-visual-studio bx-md py-3"></i>

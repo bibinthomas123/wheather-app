@@ -70,6 +70,11 @@ function Home() {
           backgroundImageUrl =
             "https://images.unsplash.com/photo-1563305641-806e131a4262?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80";
           break;
+
+        case "mist":
+          backgroundImageUrl =
+          "https://images.unsplash.com/photo-1482841628122-9080d44bb807?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80";
+          break;
         default:
           backgroundImageUrl =
             "https://images.unsplash.com/photo-1514454529242-9e4677563e7b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";

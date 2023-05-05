@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/components.css";
+
 import CloudyImage from "../assests/weatherIcons/cloudy.png";
 import RainyImage from "../assests/images/rainy.jpg";
 
